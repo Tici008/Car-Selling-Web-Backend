@@ -13,11 +13,9 @@ import cors from "cors";
 const app = express();
 app.use(express.json());
 app.use(cors());
-const JWT_SECRET_KEY = "ticibidi";
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 // Connect to MongoDB
-await mongoose.connect(
-  "mongodb+srv://quang:quang12345@cluster-customer.yetiebe.mongodb.net/carselling?retryWrites=true&w=majority",
-);
+await mongoose.connect(process.env.MONGODB_URL);
 
 //Register
 app.post("/register", async (req, res) => {
