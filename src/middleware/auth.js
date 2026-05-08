@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import AccountModel from "../models/accounts.js";
-const JWT_SECRET_KEY = "ticibidi";
+import dotenv from "dotenv";
+dotenv.config();
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 //Authentication account
 export const authMiddleware = async (req, res, next) => {

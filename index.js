@@ -12,12 +12,16 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 
+const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(express.json());
 app.use(cors());
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+const MONGODB_URL = process.env.MONGODB_URL;
+console.log("JWT_SECRET_KEY:", JWT_SECRET_KEY);
+console.log("MONGODB_URL:", MONGODB_URL);
 // Connect to MongoDB
-await mongoose.connect(process.env.MONGODB_URL);
+await mongoose.connect(MONGODB_URL);
 
 //Register
 app.post("/register", async (req, res) => {
@@ -100,6 +104,6 @@ app.post("/login", async (req, res) => {
 app.use("/users", userRouter);
 app.use("/cars", carRouter);
 app.use("/favorite-cars", FavoriteCarRouter);
-app.listen(8080, () => {
-  console.log("Server is running on port 8080");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
