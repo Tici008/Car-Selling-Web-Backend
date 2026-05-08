@@ -9,6 +9,8 @@ import userRouter from "./src/routers/userRouter.js";
 import carRouter from "./src/routers/carRouter.js";
 import FavoriteCarRouter from "./src/routers/favoriteCarRouter.js";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(express.json());
